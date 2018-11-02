@@ -94,7 +94,24 @@ footer: {
         {title: 'Twitter', target: '_blank', username: 'worldline', icon: 'twitter'},
         {title: 'Instagram', target: '_blank', username: 'worldline', icon: 'instagram'},
         {title: 'Behance', target: '_blank', username: 'worldline', icon: 'behance'},
-    ]
+    ],
+
+    blog: {
+        tagline: 'Blog Page',
+        title: 'My personal blog, my thoughts and words.',
+        posts: [
+            {id: 1, title: 'The first article', author: 'MG', image: 'gallery-image-1.jpg', publishdate: '2018-11-02T07:22Z', excert: 'This is the summary of the article.'},
+            {id: 2, title: 'The second article', author: 'MG', image: 'gallery-image-2.jpg', publishdate: '2018-11-02T08:22Z', excert: 'This is the summary of the article.'},
+            {id: 3, title: 'The third article', author: 'MG', image: 'gallery-image-3.jpg', publishdate: '2018-11-02T09:22Z', excert: 'This is the summary of the article.'},
+            {id: 4, title: 'The fourth article', author: 'MG', image: 'gallery-image-4.jpg', publishdate: '2018-11-02T10:22Z', excert: 'This is the summary of the article.'},
+            {id: 5, title: 'The fifth article', author: 'MG', image: 'gallery-image-5.jpg', publishdate: '2018-11-02T11:22Z', excert: 'This is the summary of the article.'},
+            {id: 6, title: 'The sixth article', author: 'MG', image: 'gallery-image-6.jpg', publishdate: '2018-11-02T12:22Z', excert: 'This is the summary of the article.'},
+            {id: 7, title: 'The seventh article', author: 'MG', image: 'gallery-image-7.jpg', publishdate: '2018-11-02T07:22Z', excert: 'This is the summary of the article.'},
+            {id: 8, title: 'The eighth article', author: 'MG', image: 'gallery-image-8.jpg', publishdate: '2018-11-02T07:22Z', excert: 'This is the summary of the article.'},
+            {id: 9, title: 'The ninth article', author: 'MG', image: 'gallery-image-9.jpg', publishdate: '2018-11-02T07:22Z', excert: 'This is the summary of the article.'},
+            {id: 10, title: 'The tenth article', author: 'MG', image: 'gallery-image-10.jpg', publishdate: '2018-11-02T07:22Z', excert: 'This is the summary of the article.'}
+        ]
+    }
 
 };
 

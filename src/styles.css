@@ -667,6 +667,7 @@ nav#nav-mobile a:hover {
 .social-icons {
     display: inline-block;
     list-style: none;
+    float: right !important;
 }
 
 .social-icons a {

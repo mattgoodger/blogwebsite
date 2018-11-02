@@ -1,0 +1,15 @@
+   <!--Pricing Tables-->
+   <section id="blog" class="secondary-color text-center scrollto clearfix ">
+    <div class="row clearfix">
+
+        <div class="section-heading">
+            <h3>{{blog.tagline}}</h3>
+            <h2 class="section-title">{{blog.title | uppercase}}</h2>
+        </div>
+        <div *ngFor="let post of blog.posts" class="post-block col-3 wowfadeInUp" data-wow-delay="0.4s">
+
+      <app-post [post]="post"></app-post>
+    </div>
+  </div>
+</section>
+<!--End of Pricing Tables-->

@@ -8,17 +8,20 @@ import { PricingComponent } from './pricing/pricing.component';
 import { HeaderComponent } from './header/header.component';
 import { IntroComponent } from './intro/intro.component';
 import { ContentComponent } from './content/content.component';
-
+import { BlogComponent } from './blog/blog.component';
+import { ArticleComponent } from './article/article.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/Home', pathMatch: 'full' },
-  { path: 'Home', component: HeaderComponent },
-  { path: 'About', component: IntroComponent },
-  { path: 'Services', component: ContentComponent },
-  { path: 'Testimonials', component: TestimonialComponent },
-  { path: 'Gallery', component: GalleryComponent },
-  { path: 'Clients', component: ClientsComponent },
-  { path: 'Pricing', component: PricingComponent }
+  { path: '', redirectTo: '/home', pathMatch: 'full' },
+  { path: 'home', component: HeaderComponent },
+  { path: 'about', component: IntroComponent },
+  { path: 'services', component: ContentComponent },
+  { path: 'testimonials', component: TestimonialComponent },
+  { path: 'gallery', component: GalleryComponent },
+  { path: 'clients', component: ClientsComponent },
+  { path: 'blog', component: BlogComponent },
+  { path: 'article/:id', component: ArticleComponent },
+  { path: 'pricing', component: PricingComponent }
 ];
 
 
