@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ConfigService } from '../config.service';
+import { PagerService } from '../pager.service';
 
 @Component({
   selector: 'app-blog',
@@ -8,16 +9,28 @@ import { ConfigService } from '../config.service';
 })
 export class BlogComponent implements OnInit {
 
-  blog = {};
+  blog: any = {};
+  allItems: any[];
+  pages: any[];
+  pageSize = 3;
+  pager: any = {};
 
-  constructor(private config: ConfigService) { }
+  constructor(private config: ConfigService, private pagerService: PagerService) { }
 
   ngOnInit() {
     this.blog = this.getBlog();
-  }
+    this.allItems = this.blog.posts;
+    this.setPage(1);
+    }
 
   getBlog() {
     return this.config.getConfig().blog;
+  }
+
+  setPage(pageNumber: number){
+    this.pager = this.pagerService.getPager(this.allItems.length, pageNumber, this.pageSize);
+
+    this.pages = this.allItems.slice(this.pager.startIndex, this.pager.endIndex + 1);
   }
 
 }

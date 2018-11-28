@@ -17,6 +17,17 @@ import { ConfigService } from './config.service';
 import { BlogComponent } from './blog/blog.component';
 import { PostComponent } from './post/post.component';
 import { ArticleComponent } from './article/article.component';
+import { NotfoundComponent } from './notfound/notfound.component';
+import { PaginationComponent } from './pagination/pagination.component';
+import { PagerService } from './pager.service';
+import { LoginComponent } from './login/login.component';
+import { SignupComponent } from './signup/signup.component';
+import { ContactusComponent } from './contactus/contactus.component';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
+import { InMemoryDataService }  from './in-memory-data.service';
+import { HttpClientModule } from '@angular/common/http';
+
 
 
 
@@ -35,13 +46,26 @@ import { ArticleComponent } from './article/article.component';
     NavigationComponent,
     BlogComponent,
     PostComponent,
-    ArticleComponent
+    ArticleComponent,
+    NotfoundComponent,
+    PaginationComponent,
+    LoginComponent,
+    SignupComponent,
+    ContactusComponent
+
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ReactiveFormsModule,
+    FormsModule,
+    HttpClientInMemoryWebApiModule,
+    HttpClientModule,
+    HttpClientInMemoryWebApiModule.forRoot(
+    InMemoryDataService, { dataEncapsulation: false }
+)
   ],
-  providers: [ConfigService],
+  providers: [ConfigService, PagerService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
