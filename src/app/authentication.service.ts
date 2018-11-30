@@ -12,6 +12,8 @@ import { catchError, map, tap } from 'rxjs/operators';
 export class AuthenticationService {
 
   apiUrl = 'api/users';
+  loggedInUser: boolean;
+
 
 
   private handleError<T> (operation = 'operation', result?: T) {
@@ -42,6 +44,7 @@ export class AuthenticationService {
       tap(user => {
         if (user && user.token) {
           localStorage.setItem('currentUser', JSON.stringify(user));
+          this.loggedInUser = true;
         }
 
       }),
@@ -53,11 +56,15 @@ export class AuthenticationService {
     if (localStorage.getItem('currentUser')) {
       localStorage.removeItem('currentUser');
       this.router.navigate(['/home']);
+      this.loggedInUser = false;
     }
   }
 
   isloggedIn() {
     if (localStorage.getItem('currentUser')) {
+      let userToken = JSON.parse(localStorage.getItem('currentUser'));
+      console.log(userToken.token);
+      console.log(localStorage.getItem('currentUser'));
       return true;
     } else {
       return false;

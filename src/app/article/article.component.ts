@@ -16,11 +16,13 @@ export class ArticleComponent implements OnInit {
 
   ngOnInit() {
     let id = +this.route.snapshot.paramMap.get('id');
-    this.post = this.getPostById(id);
+    this.getPostById(id);
   }
 
   getPostById(id: number){
-    return this.config.getPostByID(id);
+    return this.config.getPostByID(id).subscribe(
+      post => this.post = post
+    );
   }
 
   getBack() {

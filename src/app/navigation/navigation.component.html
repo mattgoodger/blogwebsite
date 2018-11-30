@@ -50,7 +50,7 @@
                 <li>
                     <a routerLink="/login" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Login/Sign up</a>
                 </li>
-                <li *ngIf="!isloggedIn; else isLoggedIn ">
+                <li *ngIf="loggedInUser">
                     <a (click)="logout()" >Logout</a>
                 </li>
             </ul>

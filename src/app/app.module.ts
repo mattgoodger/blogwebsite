@@ -27,6 +27,7 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryDataService }  from './in-memory-data.service';
 import { HttpClientModule } from '@angular/common/http';
+import { ArticleEditComponent } from './article-edit/article-edit.component';
 
 
 
@@ -51,7 +52,8 @@ import { HttpClientModule } from '@angular/common/http';
     PaginationComponent,
     LoginComponent,
     SignupComponent,
-    ContactusComponent
+    ContactusComponent,
+    ArticleEditComponent
 
   ],
   imports: [
