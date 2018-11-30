@@ -2,9 +2,13 @@ import { Injectable } from '@angular/core';
 import { configuration } from './configuration';
 import { Observable, of } from 'rxjs';
 import { Post } from './post';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { tap, catchError } from 'rxjs/operators';
+import { NgForm } from '@angular/forms';
 
+const httpOptions = {
+  headers: new HttpHeaders({'Content-type': 'application/json'})
+}
 
 @Injectable({
   providedIn: 'root'
@@ -40,6 +44,23 @@ export class ConfigService {
        ),
        catchError(this.handleError('Get Posts', []))
      );
+  }
+
+  updatePost(formData: NgForm): Observable<Post[]> {
+    return this.http.put<any>(`${this.apiUrl}`, formData, httpOptions).pipe(
+      tap(
+        post => console.log(post)
+      ),
+      catchError(this.handleError('Update Posts', []))
+    );
+ }
+  addPost(formData: NgForm): Observable<Post> {
+    return this.http.post<any>(`${this.apiUrl}`, formData).pipe(
+      tap(
+        post => console.log(post)
+      ),
+      catchError(this.handleError('Add New Post', []))
+    );
   }
 
   getPostByID(id: number){

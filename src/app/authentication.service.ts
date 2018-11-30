@@ -62,9 +62,9 @@ export class AuthenticationService {
 
   isloggedIn() {
     if (localStorage.getItem('currentUser')) {
-      let userToken = JSON.parse(localStorage.getItem('currentUser'));
-      console.log(userToken.token);
-      console.log(localStorage.getItem('currentUser'));
+      // let userToken = JSON.parse(localStorage.getItem('currentUser'));
+      // console.log(userToken.token);
+      // console.log(localStorage.getItem('currentUser'));
       return true;
     } else {
       return false;

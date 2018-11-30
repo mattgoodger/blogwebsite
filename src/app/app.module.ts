@@ -26,8 +26,10 @@ import { ContactusComponent } from './contactus/contactus.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryDataService }  from './in-memory-data.service';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { ArticleEditComponent } from './article-edit/article-edit.component';
+import { ArticleCreateComponent } from './article-create/article-create.component';
+import { MarkdownModule, MarkedOptions } from 'ngx-markdown';
 
 
 
@@ -53,7 +55,8 @@ import { ArticleEditComponent } from './article-edit/article-edit.component';
     LoginComponent,
     SignupComponent,
     ContactusComponent,
-    ArticleEditComponent
+    ArticleEditComponent,
+    ArticleCreateComponent
 
   ],
   imports: [
@@ -63,6 +66,21 @@ import { ArticleEditComponent } from './article-edit/article-edit.component';
     FormsModule,
     HttpClientInMemoryWebApiModule,
     HttpClientModule,
+    MarkdownModule.forRoot({
+      loader: HttpClientModule, // optional, only if you use [src] attribute
+      markedOptions: {
+        provide: MarkedOptions,
+        useValue: {
+          gfm: true,
+          tables: true,
+          breaks: false,
+          pedantic: false,
+          sanitize: false,
+          smartLists: true,
+          smartypants: false,
+        },
+      },
+    }),
     HttpClientInMemoryWebApiModule.forRoot(
     InMemoryDataService, { dataEncapsulation: false }
 )

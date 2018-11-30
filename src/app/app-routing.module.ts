@@ -15,6 +15,8 @@ import { RouteguardService } from './routeguard.service';
 import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
 import { ContactusComponent } from './contactus/contactus.component';
+import { ArticleEditComponent } from './article-edit/article-edit.component';
+import { ArticleCreateComponent } from './article-create/article-create.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -29,9 +31,12 @@ const routes: Routes = [
   { path: 'clients', component: ClientsComponent },
   { path: 'blog', component: BlogComponent, canActivate: [RouteguardService] },
   { path: 'article/:id', component: ArticleComponent },
-  { path: 'pricing', component: PricingComponent },
+  { path: 'pricing', component: PricingComponent },  
+  { path: 'article-edit/:id', component: ArticleEditComponent, canActivate: [RouteguardService] },
+  { path: 'article-create', component: ArticleCreateComponent, canActivate: [RouteguardService] },
   { path: '404', component: NotfoundComponent },
   { path: '**', redirectTo: '/404' },
+
 ];
 
 

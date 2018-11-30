@@ -6,7 +6,7 @@
         <img src="../../assets/images/gallery-images/{{post.image}}">
     </div>
     <ul>
-        {{post.excert}}
+            <div markdown [data]="post.excert" id="preview"></div>
     </ul>
     <a routerLink="/article/{{post.id}}" class="button" style="margin-right: 10px;"><i class="icon ion-md-heart" ></i></a>
     <a routerLink="/article-edit/{{post.id}}" class="button"><i class="icon ion-md-create" ></i></a>
