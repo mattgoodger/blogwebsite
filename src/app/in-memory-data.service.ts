@@ -16,11 +16,66 @@ export class InMemoryDataService implements InMemoryDbService {
       { id: 13, firstname: 'Kez', surname: 'Walker', email: 'kez@test.com', password: 'kez123' },
       { id: 14, firstname: 'Andy', surname: 'Thompson', email: 'andy@test.com', password: 'andy123' }
     ];
-    return {users};
+
+    const posts =  [
+      {id: 1, title: 'The first article',
+       author: 'MG', image: 'gallery-image-1.jpg', publishdate: '2018-11-02T07:22Z', excert: 'This is the summary of the article.'},
+      {id: 2, title: 'The second article',
+       author: 'MG', image: 'gallery-image-2.jpg', publishdate: '2018-11-02T08:22Z', excert: 'This is the summary of the article.'},
+      {id: 3, title: 'The third article',
+       author: 'MG', image: 'gallery-image-3.jpg', publishdate: '2018-11-02T09:22Z', excert: 'This is the summary of the article.'},
+      {id: 4, title: 'The fourth article',
+       author: 'MG', image: 'gallery-image-4.jpg', publishdate: '2018-11-02T10:22Z', excert: 'This is the summary of the article.'},
+      {id: 5, title: 'The fifth article',
+       author: 'MG', image: 'gallery-image-5.jpg', publishdate: '2018-11-02T11:22Z', excert: 'This is the summary of the article.'},
+      {id: 6, title: 'The sixth article',
+       author: 'MG', image: 'gallery-image-6.jpg', publishdate: '2018-11-02T12:22Z', excert: 'This is the summary of the article.'},
+      {id: 7, title: 'The seventh article',
+       author: 'MG', image: 'gallery-image-3.jpg', publishdate: '2018-11-02T07:22Z', excert: 'This is the summary of the article.'},
+      {id: 8, title: 'The eighth article',
+       author: 'MG', image: 'gallery-image-1.jpg', publishdate: '2018-11-02T07:22Z', excert: 'This is the summary of the article.'},
+      {id: 9, title: 'The ninth article',
+       author: 'MG', image: 'gallery-image-4.jpg', publishdate: '2018-11-02T07:22Z', excert: 'This is the summary of the article.'},
+      {id: 10, title: 'The tenth article',
+       author: 'MG', image: 'gallery-image-2.jpg', publishdate: '2018-11-02T07:22Z', excert: 'This is the summary of the article.'}
+  ];
+    return {users, posts};
   }
 
   getToken(user){
     return 'this is a token';
+  }
+
+  get (reqInfo: RequestInfo){
+    if (reqInfo.collectionName ==='posts' ){
+      return this.getArticles(reqInfo);
+    }
+    return undefined;
+  }
+
+  getArticles(reqInfo: RequestInfo) {
+
+    return reqInfo.utils.createResponse$(() => {
+      const dataEncapsulation = reqInfo.utils.getConfig().dataEncapsulation;
+      const collection = reqInfo.collection;
+      const id = reqInfo.id;
+      const data = id === undefined ? collection : reqInfo.utils.findById(collection, id)
+
+      const options: ResponseOptions = data ?
+      {
+        body: dataEncapsulation ? { data } : data,
+        status: 200
+      } :
+      {
+        body: { error: 'Post not found'},
+        status: 404
+      };
+
+      options.statusText = options.status === 200 ? 'ok' : 'Not Found'
+      options.headers = reqInfo.headers;
+      options.url = reqInfo.url;
+      return options;
+    });
   }
 
   post(reqInfo: RequestInfo){

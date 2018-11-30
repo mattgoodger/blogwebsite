@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
 import { AuthenticationService } from '../authentication.service';
 import * as $ from 'jquery';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-navigation',
@@ -11,12 +12,13 @@ import * as $ from 'jquery';
 export class NavigationComponent implements OnInit {
 
   activetab: string;
-  isLoggedIn: boolean;
+  isLoggedIn$: Observable<boolean>; 
 
   constructor(private location: Location,
     private auth: AuthenticationService) { }
 
   ngOnInit() {
+   
     // this.activetab = this.location.path();
     // console.log(`from ${this.activetab}`);
 
