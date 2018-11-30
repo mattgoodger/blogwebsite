@@ -47,10 +47,12 @@
                 <li>
                     <a routerLink="/blog" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Blog</a>
                 </li>
-                <li>
+                <!-- Disable login after login -->
+                <li *ngIf="isloggedIn();">
                     <a routerLink="/login" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Login/Sign up</a>
                 </li>
-                <li *ngIf="!isloggedIn; else isLoggedIn ">
+                <!-- Enable logout after login -->
+                <li *ngIf="!isloggedIn();">
                     <a (click)="logout()" >Logout</a>
                 </li>
             </ul>
