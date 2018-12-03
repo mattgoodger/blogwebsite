@@ -17,6 +17,17 @@ export class InMemoryDataService implements InMemoryDbService {
       { id: 14, firstname: 'Andy', surname: 'Thompson', email: 'andy@test.com', password: 'andy123' }
     ];
 
+    const menu = [
+      { id: 1, title: 'home', link: '/home'},
+      { id: 2, title: 'about', link: '/about'},
+      { id: 3, title: 'gallery', link: '/gallery'},
+      { id: 4, title: 'services', link: '/services'},
+      { id: 5, title: 'testimonials', link: '/testimonials'},
+      { id: 6, title: 'clients', link: '/clients'},
+      { id: 7, title: 'pricing', link: '/pricing'},
+      { id: 7, title: 'blog', link: '/blog'}
+    ]
+
     const posts =  [
       {id: 1, title: 'The first article',
        author: 'MG', image: 'gallery-image-1.jpg', publishdate: '2018-11-02T07:22Z', excert: 'This is the summary of the article.'},
@@ -39,7 +50,7 @@ export class InMemoryDataService implements InMemoryDbService {
       {id: 10, title: 'The tenth article',
        author: 'MG', image: 'gallery-image-2.jpg', publishdate: '2018-11-02T07:22Z', excert: 'This is the summary of the article.'}
   ];
-    return {users, posts};
+    return {users, posts, menu};
   }
 
   getToken(user){
